@@ -12,57 +12,57 @@ using std::max_element;
 
 
 class StackWithMax {
-    vector<int> stack;
+	vector<int> stack;
 	vector<int> max;
 
-  public:
+public:
 
-    void Push(int value) {
+	void Push(int value) {
 		stack.push_back(value);
-		if (max.empty() || value > Max()){
+		if (max.empty() || value >= Max()){
 			max.push_back(value);
 		}
-    }
+	}
 
-    void Pop() {
-        assert(stack.size());
+	void Pop() {
+		assert(stack.size());
 		if (stack.back() == Max()){
 			max.pop_back();
 		}
-        stack.pop_back();
+		stack.pop_back();
 
-    }
+	}
 
-    int Max() const {
-        assert(stack.size());
+	int Max() const {
+		assert(stack.size());
 		return max.back();
-    }
+	}
 };
 
 int main() {
-    int num_queries = 0;
-    cin >> num_queries;
+	int num_queries = 0;
+	cin >> num_queries;
 
-    string query;
-    string value;
+	string query;
+	string value;
 
-    StackWithMax stack;
+	StackWithMax stack;
 
-    for (int i = 0; i < num_queries; ++i) {
-        cin >> query;
-        if (query == "push") {
-            cin >> value;
-            stack.Push(std::stoi(value));
-        }
-        else if (query == "pop") {
-            stack.Pop();
-        }
-        else if (query == "max") {
-            cout << stack.Max() << "\n";
-        }
-        else {
-            assert(0);
-        }
-    }
-    return 0;
+	for (int i = 0; i < num_queries; ++i) {
+		cin >> query;
+		if (query == "push") {
+			cin >> value;
+			stack.Push(std::stoi(value));
+		}
+		else if (query == "pop") {
+			stack.Pop();
+		}
+		else if (query == "max") {
+			cout << stack.Max() << "\n";
+		}
+		else {
+			assert(0);
+		}
+	}
+	return 0;
 }
